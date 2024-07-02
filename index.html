@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHRUVI JI HBD</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+    }
+    .loading-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .loading-text {
+      font-size: 2em;
+      color: #000;
+      text-align: center;
+      text-shadow: 2px 2px 4px #fff;
+      margin-bottom: 20px;
+      z-index: 1;
+    }
+    .buffering {
+      margin-top: 20px;
+      width: 40px;
+      height: 40px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+      z-index: 1;
+    }
+    .image-container {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      z-index: 0;
+    }
+    .image-container img {
+      max-width: 500px;
+      max-height: 500px;
+      padding: 20px;
+    }
+    .question-screen, .second-question-screen, .third-question-screen, .fourth-question-screen {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+    .question-text {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .options {
+      display: flex;
+      gap: 20px;
+    }
+    .option {
+      padding: 10px 20px;
+      font-size: 1.5em;
+      cursor: pointer;
+      border: 2px solid #000;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+    }
+    .message {
+      display: none;
+      font-size: 2em;
+      color: red;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-screen">
+    <div class="image-container">
+      <img src="26.png" alt="Birthday Image">
+    </div>
+    <div class="loading-text">
+      20 saal akele birthday banayi kuch second wait nhi kr skti re
+      <div class="buffering"></div>
+    </div>
+  </div>
+  
+  <div class="question-screen">
+    <div class="question-text">Are you Dhruvi?</div>
+    <div class="options">
+      <div class="option" id="yes1">Yes</div>
+      <div class="option" id="no1">No</div>
+    </div>
+    <div class="message" id="no-message1">Toh bhagg jaaa yahan se.</div>
+  </div>
+  
+  <div class="second-question-screen">
+    <div class="question-text">Mtlb Bhoomi tumhi ho?</div>
+    <div class="options">
+      <div class="option" id="yes2">Yes</div>
+      <div class="option" id="no2">No</div>
+    </div>
+    <div class="message" id="no-message2">Ab bhi bol rhe bhag jaa yahan se.</div>
+  </div>
+  
+  <div class="third-question-screen">
+    <div class="question-text">Mtlb Shashank Jha ki gf, wife sabkuch ho na?</div>
+    <div class="options">
+      <div class="option" id="yes3">Yes</div>
+      <div class="option" id="no3">No</div>
+    </div>
+    <div class="message" id="no-message3">Jaan se mar dungaa.</div>
+  </div>
+
+  <div class="fourth-question-screen">
+    <div class="question-text">I LOVE YOU....bhaut miss kr rhe tumko ..isko birthday gift nhi bolenge lekin tum boli thi ki kuch precious nhi chaiye jo chiaye hai dil se chaiye hai?</div>
+    <div class="options">
+      <div class="option" id="watch">Watch</div>
+    </div>
+    <div class="message" id="no-message4">Toh bhagg jaaa yahan se.</div>
+  </div>
+  
+  <div style="position:relative;padding-top:max(60%,324px);width:100%;height:0;display:none;" id="iframe-container">
+    <iframe style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;" src="https://online.fliphtml5.com/wlcpm/khbi/" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
+  </div>
+  
+  <script>
+    setTimeout(function() {
+      document.querySelector('.loading-screen').style.display = 'none';
+      document.querySelector('.question-screen').style.display = 'flex';
+    }, 15000); // 15 seconds
+
+    document.getElementById('yes1').addEventListener('click', function() {
+      document.querySelector('.question-screen').style.display = 'none';
+      document.querySelector('.second-question-screen').style.display = 'flex';
+    });
+
+    document.getElementById('no1').addEventListener('click', function() {
+      document.querySelector('.options').style.display = 'none';
+      document.getElementById('no-message1').style.display = 'block';
+    });
+
+    document.getElementById('yes2').addEventListener('click', function() {
+      document.querySelector('.second-question-screen').style.display = 'none';
+      document.querySelector('.third-question-screen').style.display = 'flex';
+    });
+
+    document.getElementById('no2').addEventListener('click', function() {
+      document.querySelector('.options').style.display = 'none';
+      document.getElementById('no-message2').style.display = 'block';
+    });
+
+    document.getElementById('yes3').addEventListener('click', function() {
+      document.querySelector('.third-question-screen').style.display = 'none';
+      document.querySelector('.fourth-question-screen').style.display = 'flex';
+    });
+
+    document.getElementById('no3').addEventListener('click', function() {
+      document.querySelector('.options').style.display = 'none';
+      document.getElementById('no-message3').style.display = 'block';
+    });
+
+    document.getElementById('watch').addEventListener('click', function() {
+      document.querySelector('.fourth-question-screen').style.display = 'none';
+      document.getElementById('iframe-container').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
